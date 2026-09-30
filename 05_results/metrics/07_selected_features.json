@@ -1,0 +1,35 @@
+{
+    "n_total": 1402,
+    "n_train": 1121,
+    "n_test": 281,
+    "cv_method": "fixed 5-fold PredefinedSplit",
+    "selected_indices": [
+        "NDGI",
+        "AWEI",
+        "BSI",
+        "EVI",
+        "ARVI",
+        "NBRI",
+        "MSI"
+    ],
+    "best_index_cv_r2": 0.6053027606739515,
+    "selected_bands": [
+        "B04_rhow",
+        "B08_rhow",
+        "B03_rhow"
+    ],
+    "best_band_cv_r2": 0.7182245631438089,
+    "final_original_features": [
+        "NDGI",
+        "AWEI",
+        "BSI",
+        "EVI",
+        "ARVI",
+        "NBRI",
+        "MSI",
+        "B04_rhow",
+        "B08_rhow",
+        "B03_rhow"
+    ],
+    "unavailable_index": "GCI (B09 unavailable)"
+}
