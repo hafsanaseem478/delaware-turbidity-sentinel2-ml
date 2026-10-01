@@ -1,0 +1,3 @@
+feature_set,n_features,mean_cv_r2,std_cv_r2
+original_only,10,0.7182245631438089,0.12712815302775915
+original_plus_cube_root,20,0.7076903229505307,0.14419456229391603

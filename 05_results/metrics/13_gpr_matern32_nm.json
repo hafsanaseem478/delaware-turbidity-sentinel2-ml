@@ -1,0 +1,95 @@
+{
+    "method": "NM/GPR Matern32",
+    "literature_basis": "Garcia-Nieto et al. 2026",
+    "features": [
+        "NDGI",
+        "AWEI",
+        "BSI",
+        "EVI",
+        "ARVI",
+        "NBRI",
+        "MSI",
+        "B04_rhow",
+        "B08_rhow",
+        "B03_rhow"
+    ],
+    "n_train": 1121,
+    "n_test_not_used": 281,
+    "kernel": "ConstantKernel * Matern(nu=1.5) + WhiteKernel",
+    "initial_parameters": {
+        "length_scale_l": 0.3,
+        "amplitude_a": 1.0,
+        "noise_variance": 1e-08,
+        "note": "Paper initializes noise variance at zero; 1e-8 used because sklearn optimizes positive kernel parameters in log-space."
+    },
+    "optimizer": "Nelder-Mead",
+    "cv": "existing locked 5-fold PredefinedSplit",
+    "mean_cv_r2": 0.597609286997543,
+    "std_cv_r2": 0.12403675933137172,
+    "mean_cv_rmse_fnu": 8.69359665165666,
+    "mean_cv_mae_fnu": 3.5607839705938766,
+    "mean_cv_mbe_fnu": -0.20285748090680772,
+    "fold_results": [
+        {
+            "fold": 1,
+            "r2": 0.7285987411825853,
+            "rmse_fnu": 8.80085844366264,
+            "mae_fnu": 4.401006734961433,
+            "mbe_fnu": -0.2939473932729666,
+            "amplitude_a": 3.6653518983416085,
+            "length_scale_l": 2.305382861947559,
+            "noise_variance": 0.003614373794776693,
+            "mean_prediction_std": 7.491968571960958
+        },
+        {
+            "fold": 2,
+            "r2": 0.6611822134381851,
+            "rmse_fnu": 10.034187713415339,
+            "mae_fnu": 3.322750019968613,
+            "mbe_fnu": -0.1701254421458189,
+            "amplitude_a": 3.735822155105421,
+            "length_scale_l": 2.779908119155596,
+            "noise_variance": 0.015727234025930095,
+            "mean_prediction_std": 5.838969715295454
+        },
+        {
+            "fold": 3,
+            "r2": 0.6976676043648415,
+            "rmse_fnu": 11.506132184802428,
+            "mae_fnu": 3.948500881112086,
+            "mbe_fnu": -1.0735024604241912,
+            "amplitude_a": 2.9800440779539445,
+            "length_scale_l": 2.1768030242533545,
+            "noise_variance": 2.6347093250982786e-05,
+            "mean_prediction_std": 6.031446268059205
+        },
+        {
+            "fold": 4,
+            "r2": 0.4162879873681353,
+            "rmse_fnu": 4.259521187242606,
+            "mae_fnu": 2.536825759132119,
+            "mbe_fnu": -0.20822945281617816,
+            "amplitude_a": 2.4015207909904763,
+            "length_scale_l": 2.0092181628461736,
+            "noise_variance": 0.007401137645673128,
+            "mean_prediction_std": 6.82092792263271
+        },
+        {
+            "fold": 5,
+            "r2": 0.48430988863396784,
+            "rmse_fnu": 8.867283729160294,
+            "mae_fnu": 3.5948364577951324,
+            "mbe_fnu": 0.731517344125116,
+            "amplitude_a": 3.3897008828816992,
+            "length_scale_l": 2.330196341417794,
+            "noise_variance": 0.01087616237618497,
+            "mean_prediction_std": 6.318871999845122
+        }
+    ],
+    "full_training_optimized_parameters": {
+        "amplitude_a": 2.7574047233918346,
+        "length_scale_l": 2.1003088144261306,
+        "noise_variance": 0.009523627483439547,
+        "kernel": "1.66**2 * Matern(length_scale=2.1, nu=1.5) + WhiteKernel(noise_level=0.00952)"
+    }
+}

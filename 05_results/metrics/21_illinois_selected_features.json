@@ -1,0 +1,93 @@
+{
+    "basin": "Illinois",
+    "target": "MeasurementValue",
+    "n_total_after_feature_qc": 1083,
+    "n_train": 874,
+    "n_test": 209,
+    "available_santos_indices": [
+        "NDVI",
+        "GNDVI",
+        "EVI",
+        "SAVI",
+        "NDMI",
+        "MSI",
+        "NBRI",
+        "BSI",
+        "NDWI",
+        "NDSI",
+        "NDGI",
+        "ARVI",
+        "SIPI",
+        "SWM",
+        "AWEI",
+        "3BSI"
+    ],
+    "unavailable_santos_indices": [
+        "GCI"
+    ],
+    "gci_reason": "B09 is not available in the USGS ACOLITE matched product.",
+    "candidate_bands": [
+        "B01_rhow",
+        "B02_rhow",
+        "B03_rhow",
+        "B04_rhow",
+        "B05_rhow",
+        "B06_rhow",
+        "B07_rhow",
+        "B08_rhow",
+        "B8A_rhow",
+        "B11_rhow",
+        "B12_rhow"
+    ],
+    "selected_indices": [
+        "AWEI",
+        "NDGI",
+        "SWM",
+        "NBRI",
+        "NDSI",
+        "SIPI",
+        "3BSI",
+        "SAVI"
+    ],
+    "selected_bands": [
+        "B05_rhow",
+        "B01_rhow",
+        "B8A_rhow"
+    ],
+    "final_original_features": [
+        "AWEI",
+        "NDGI",
+        "SWM",
+        "NBRI",
+        "NDSI",
+        "SIPI",
+        "3BSI",
+        "SAVI",
+        "B05_rhow",
+        "B01_rhow",
+        "B8A_rhow"
+    ],
+    "index_only_mean_cv_r2": 0.588652790054067,
+    "final_mean_cv_r2": 0.6501067145550143,
+    "final_std_cv_r2": 0.147855260120817,
+    "final_fold_r2": [
+        0.8077970986533254,
+        0.7059580373885002,
+        0.6223824080161716,
+        0.41327721328239453,
+        0.7011188154346798
+    ],
+    "selection_model": {
+        "model": "XGBRegressor",
+        "n_estimators": 200,
+        "learning_rate": 0.05,
+        "max_depth": 3,
+        "min_child_weight": 1,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "reg_alpha": 0.0,
+        "reg_lambda": 1.0,
+        "random_state": 42
+    },
+    "validation": "Locked acquisition-date grouped PredefinedSplit on Illinois training data only."
+}

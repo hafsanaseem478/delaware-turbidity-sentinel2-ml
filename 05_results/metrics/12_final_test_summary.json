@@ -1,0 +1,37 @@
+{
+    "n_train": 1121,
+    "n_test": 281,
+    "features": [
+        "NDGI",
+        "AWEI",
+        "BSI",
+        "EVI",
+        "ARVI",
+        "NBRI",
+        "MSI",
+        "B04_rhow",
+        "B08_rhow",
+        "B03_rhow"
+    ],
+    "xgboost_cv_r2": 0.7212736533372232,
+    "gpr_cv_r2": 0.5984831475890509,
+    "gpr_kernel": "RationalQuadratic",
+    "final_test_results": {
+        "XGBoost": {
+            "model": "XGBoost",
+            "r2": 0.6786903830194685,
+            "rmse_fnu": 7.880772690061369,
+            "nrmse": 1.099442521054138,
+            "mae_fnu": 3.004110543498789,
+            "mbe_fnu": -0.061795736801581784
+        },
+        "GPR": {
+            "model": "GPR",
+            "r2": 0.7288741353539266,
+            "rmse_fnu": 7.23923064848363,
+            "nrmse": 1.0099413227206335,
+            "mae_fnu": 3.445759644269031,
+            "mbe_fnu": -0.04745216990779637
+        }
+    }
+}

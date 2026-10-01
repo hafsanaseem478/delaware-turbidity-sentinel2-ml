@@ -1,0 +1,29 @@
+{
+    "features": [
+        "NDGI",
+        "AWEI",
+        "BSI",
+        "EVI",
+        "ARVI",
+        "NBRI",
+        "MSI",
+        "B04_rhow",
+        "B08_rhow",
+        "B03_rhow"
+    ],
+    "best_parameters": {
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "min_child_weight": 1,
+        "n_estimators": 200,
+        "subsample": 0.8
+    },
+    "best_mean_cv_r2": 0.7212736533372232,
+    "fold_r2": [
+        0.8422251861025417,
+        0.6856319921481986,
+        0.5825954516168481,
+        0.5785809949506717,
+        0.9173346418678553
+    ]
+}

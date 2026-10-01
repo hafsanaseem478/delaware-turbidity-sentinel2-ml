@@ -1,10 +1,9 @@
 from pathlib import Path
 import json
-
 import numpy as np
 import pandas as pd
 
-from sklearn.model_selection import KFold, cross_val_score
+from sklearn.model_selection import PredefinedSplit, cross_val_score
 from xgboost import XGBRegressor
 
 
@@ -17,13 +16,9 @@ FEATURE_FILE = Path(
 )
 
 OUTPUT = Path(
-    "05_results/tables/08_cube_root_comparison.csv"
+    "05_results/tables/08_locked_cube_root_comparison.csv"
 )
 
-
-# ============================================================
-# LOAD
-# ============================================================
 
 df = pd.read_csv(
     INPUT,
@@ -34,59 +29,37 @@ df = pd.read_csv(
 with open(FEATURE_FILE, "r", encoding="utf-8") as f:
     selection = json.load(f)
 
-selected = selection["final_original_features"]
+features = selection["final_original_features"]
+
+train = (
+    df[df["split"] == "train"]
+    .sort_values("sample_id")
+    .copy()
+)
+
+y = train["MeasurementValue"].values
+
+cv = PredefinedSplit(
+    test_fold=train["cv_fold"].values
+)
 
 
-# ============================================================
-# TRAINING DATA ONLY
-# ============================================================
-
-train = df[df["split"] == "train"].copy()
-
-y = train["MeasurementValue"]
-
-
-# ============================================================
-# CREATE CUBE-ROOT FEATURES
-# ============================================================
+# ------------------------------------------------------------
+# Create cube-root versions
+# ------------------------------------------------------------
 
 cube_features = []
 
-for feature in selected:
+for feature in features:
 
     name = f"{feature}_cbrt"
 
-    if name not in train.columns:
-        train[name] = np.cbrt(
-            train[feature].astype(float)
-        )
+    train[name] = np.cbrt(
+        train[feature].astype(float)
+    )
 
     cube_features.append(name)
 
-
-# ============================================================
-# FEATURE SETS
-# ============================================================
-
-feature_sets = {
-
-    # exactly what gave us ~0.7228
-    "original_only":
-        selected,
-
-    # Santos-style addition
-    "original_plus_cube_root":
-        selected + cube_features,
-
-    # useful diagnostic
-    "cube_root_only":
-        cube_features,
-}
-
-
-# ============================================================
-# SAME XGBOOST AS BEFORE
-# ============================================================
 
 def make_model():
 
@@ -104,34 +77,31 @@ def make_model():
     )
 
 
-cv = KFold(
-    n_splits=5,
-    shuffle=True,
-    random_state=42,
-)
+feature_sets = {
 
+    "original_only":
+        features,
 
-# ============================================================
-# TEST THREE FEATURE CONFIGURATIONS
-# ============================================================
+    "original_plus_cube_root":
+        features + cube_features,
+}
+
 
 results = []
 
 print("=" * 80)
-print("CUBE-ROOT FEATURE COMPARISON")
+print("LOCKED CUBE-ROOT COMPARISON")
 print("=" * 80)
 
 print("\nTraining samples:", len(train))
-print("Held-out test set: NOT USED\n")
+print("Test set remains untouched.\n")
 
 
-for name, features in feature_sets.items():
-
-    X = train[features]
+for name, cols in feature_sets.items():
 
     scores = cross_val_score(
         make_model(),
-        X,
+        train[cols],
         y,
         scoring="r2",
         cv=cv,
@@ -140,38 +110,27 @@ for name, features in feature_sets.items():
 
     results.append({
         "feature_set": name,
-        "n_features": len(features),
+        "n_features": len(cols),
         "mean_cv_r2": scores.mean(),
         "std_cv_r2": scores.std(),
     })
 
     print(
-        f"{name:28s}"
-        f" features={len(features):2d}"
-        f" | R² = {scores.mean():.4f}"
+        f"{name:27s}"
+        f" R² = {scores.mean():.4f}"
         f" ± {scores.std():.4f}"
     )
 
 
-results_df = (
-    pd.DataFrame(results)
-    .sort_values(
-        "mean_cv_r2",
-        ascending=False
-    )
-)
-
-print("\n" + "=" * 80)
-print("RESULT")
-print("=" * 80)
-
-print(results_df.to_string(index=False))
-
+results_df = pd.DataFrame(results)
 
 results_df.to_csv(
     OUTPUT,
     index=False
 )
+
+print("\nExpected original-only R²:")
+print(round(selection["best_band_cv_r2"], 4))
 
 print("\nSaved:")
 print(OUTPUT)
