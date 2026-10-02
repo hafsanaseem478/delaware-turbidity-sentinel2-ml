@@ -1,0 +1,97 @@
+{
+    "study": "Delaware Santos-style replication",
+    "n_train": 1121,
+    "n_test_locked": 281,
+    "test_used": false,
+    "selection_metric": "R2",
+    "cross_validation": "5-fold shuffled KFold",
+    "random_state": 42,
+    "n_features": 20,
+    "features": [
+        "NDGI",
+        "AWEI",
+        "BSI",
+        "EVI",
+        "ARVI",
+        "NBRI",
+        "MSI",
+        "B04_rhow",
+        "B08_rhow",
+        "B03_rhow",
+        "NDGI_cbrt",
+        "AWEI_cbrt",
+        "BSI_cbrt",
+        "EVI_cbrt",
+        "ARVI_cbrt",
+        "NBRI_cbrt",
+        "MSI_cbrt",
+        "B04_rhow_cbrt",
+        "B08_rhow_cbrt",
+        "B03_rhow_cbrt"
+    ],
+    "preprocessing_options": [
+        "None",
+        "Standard",
+        "YeoJohnson",
+        "YeoJohnson+Standard"
+    ],
+    "best_configs": {
+        "XGBoost": {
+            "preprocessing": "None",
+            "cv_r2": 0.7091302683689322,
+            "cv_sd": 0.1489195912288606,
+            "cv_se": 0.06659886583384274,
+            "parameters": {
+                "colsample_bytree": 1.0,
+                "learning_rate": 0.03,
+                "max_depth": 3,
+                "min_child_weight": 1,
+                "n_estimators": 200,
+                "subsample": 0.8
+            }
+        },
+        "RandomForest": {
+            "preprocessing": "Standard",
+            "cv_r2": 0.7147630163151648,
+            "cv_sd": 0.13393485714989603,
+            "cv_se": 0.05989748902877825,
+            "parameters": {
+                "max_depth": 10,
+                "max_features": 0.7,
+                "min_samples_leaf": 2,
+                "n_estimators": 300
+            }
+        },
+        "SVR": {
+            "preprocessing": "Standard",
+            "cv_r2": 0.7095768381097693,
+            "cv_sd": 0.12324074157304789,
+            "cv_se": 0.055114935150963884,
+            "parameters": {
+                "C": 100,
+                "epsilon": 0.1,
+                "gamma": "scale"
+            }
+        },
+        "kNN": {
+            "preprocessing": "Standard",
+            "cv_r2": 0.7093628342529499,
+            "cv_sd": 0.1202860068184135,
+            "cv_se": 0.053793537597595156,
+            "parameters": {
+                "n_neighbors": 5,
+                "p": 1,
+                "weights": "distance"
+            }
+        },
+        "LASSO": {
+            "preprocessing": "None",
+            "cv_r2": 0.6076540655740763,
+            "cv_sd": 0.18189063086504353,
+            "cv_se": 0.08134396301691174,
+            "parameters": {
+                "alpha": 0.0001
+            }
+        }
+    }
+}

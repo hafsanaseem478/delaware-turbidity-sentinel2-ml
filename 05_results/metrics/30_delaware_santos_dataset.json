@@ -1,0 +1,79 @@
+{
+    "study_area": "Delaware River Basin",
+    "source_dataset": "05_results\\tables\\00_all_basin_model_ready_rows.csv",
+    "reflectance": "USGS ACOLITE-DSF aquatic reflectance",
+    "santos_reference_reflectance": "Sentinel-2 Level-1C TOA reflectance",
+    "target": "MeasurementValue",
+    "random_state": 42,
+    "split_method": "Random 80/20 train/test split",
+    "rows_before_feature_qc": 1407,
+    "rows_after_feature_qc": 1402,
+    "n_train": 1121,
+    "n_test": 281,
+    "available_santos_indices": [
+        "NDVI",
+        "GNDVI",
+        "EVI",
+        "SAVI",
+        "NDMI",
+        "MSI",
+        "NBRI",
+        "BSI",
+        "NDWI",
+        "NDSI",
+        "NDGI",
+        "ARVI",
+        "SIPI",
+        "SWM",
+        "AWEI",
+        "3BSI"
+    ],
+    "unavailable_santos_indices": {
+        "GCI": "Requires Sentinel-2 B09, which is unavailable in the USGS ACOLITE dataset."
+    },
+    "available_bands": [
+        "B01_rhow",
+        "B02_rhow",
+        "B03_rhow",
+        "B04_rhow",
+        "B05_rhow",
+        "B06_rhow",
+        "B07_rhow",
+        "B08_rhow",
+        "B8A_rhow",
+        "B11_rhow",
+        "B12_rhow"
+    ],
+    "unavailable_santos_bands": [
+        "B09",
+        "B10"
+    ],
+    "invalid_index_counts_before_qc": {
+        "NDVI": 0,
+        "GNDVI": 0,
+        "EVI": 0,
+        "SAVI": 0,
+        "NDMI": 0,
+        "MSI": 0,
+        "NBRI": 0,
+        "BSI": 0,
+        "NDWI": 0,
+        "NDSI": 0,
+        "NDGI": 0,
+        "ARVI": 0,
+        "SIPI": 5,
+        "SWM": 0,
+        "AWEI": 0,
+        "3BSI": 0
+    },
+    "site_numbers": [
+        "01427207",
+        "01438500",
+        "01458500",
+        "01463500",
+        "014670261",
+        "01467200",
+        "01473500"
+    ],
+    "test_set_used_for_feature_selection": false
+}

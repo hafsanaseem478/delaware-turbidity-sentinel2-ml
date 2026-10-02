@@ -1,0 +1,5 @@
+normalization,cv_r2,search
+None,0.656477,full_grid
+Standard,0.656477,full_grid
+YeoJohnson,0.656477,full_grid
+YeoJohnson_Standard,0.6564774254352596,winning_configuration_verification

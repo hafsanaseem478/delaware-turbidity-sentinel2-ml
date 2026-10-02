@@ -1,0 +1,31 @@
+{
+    "basin": "Illinois",
+    "methodology": "Santos-style primary XGBoost experiment",
+    "model": "XGBoost",
+    "normalization": "None",
+    "n_train": 866,
+    "n_test": 217,
+    "n_predictors": 32,
+    "training_cv_r2": 0.656477,
+    "best_parameters": {
+        "colsample_bytree": 1.0,
+        "learning_rate": 0.03,
+        "max_depth": 3,
+        "min_child_weight": 1,
+        "n_estimators": 400,
+        "reg_alpha": 0.0,
+        "reg_lambda": 1.0,
+        "subsample": 0.8
+    },
+    "normalization_results": {
+        "None": 0.656477,
+        "Standard": 0.656477,
+        "YeoJohnson": 0.656477,
+        "YeoJohnson_Standard_verification": 0.6564774254352596
+    },
+    "test_r2": 0.25391603086748715,
+    "test_rmse_fnu": 24.51667476940746,
+    "test_nrmse": 1.2356276535120354,
+    "test_mae_fnu": 10.638241515524927,
+    "test_mbe_fnu": 2.6674033565867337
+}

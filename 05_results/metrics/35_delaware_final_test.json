@@ -1,0 +1,102 @@
+{
+    "study": "Delaware River turbidity \u2014 Santos-style baselines plus GPR extension",
+    "n_total": 1402,
+    "n_train": 1121,
+    "n_test": 281,
+    "n_features": 20,
+    "features": [
+        "NDGI",
+        "AWEI",
+        "BSI",
+        "EVI",
+        "ARVI",
+        "NBRI",
+        "MSI",
+        "B04_rhow",
+        "B08_rhow",
+        "B03_rhow",
+        "NDGI_cbrt",
+        "AWEI_cbrt",
+        "BSI_cbrt",
+        "EVI_cbrt",
+        "ARVI_cbrt",
+        "NBRI_cbrt",
+        "MSI_cbrt",
+        "B04_rhow_cbrt",
+        "B08_rhow_cbrt",
+        "B03_rhow_cbrt"
+    ],
+    "target": "MeasurementValue",
+    "test_evaluation": "Single held-out evaluation after training/CV model selection",
+    "nrmse_definition": "RMSE / mean observed test turbidity",
+    "mbe_definition": "mean(predicted - observed)",
+    "gpr_final_kernel": "2.73**2 * RationalQuadratic(alpha=0.105, length_scale=3.72) + WhiteKernel(noise_level=0.0255)",
+    "results": [
+        {
+            "model": "kNN",
+            "type": "Santos-style baseline",
+            "preprocessing": "Standard",
+            "training_cv_r2": 0.7093628342529499,
+            "R2": 0.7579327498768701,
+            "RMSE_FNU": 6.840296973821591,
+            "nRMSE": 0.954286292147685,
+            "MAE_FNU": 2.800222995398697,
+            "MBE_FNU": -0.3917835227605431
+        },
+        {
+            "model": "GPR",
+            "type": "Proposed extension",
+            "preprocessing": "Standard",
+            "training_cv_r2": 0.63675290557814,
+            "R2": 0.738487436258589,
+            "RMSE_FNU": 7.109731797490432,
+            "nRMSE": 0.9918750050118218,
+            "MAE_FNU": 3.268140523320815,
+            "MBE_FNU": -0.1386388641056741
+        },
+        {
+            "model": "XGBoost",
+            "type": "Santos-style baseline",
+            "preprocessing": "None",
+            "training_cv_r2": 0.7091302683689322,
+            "R2": 0.7350073049039447,
+            "RMSE_FNU": 7.1568825461142715,
+            "nRMSE": 0.9984529815599793,
+            "MAE_FNU": 2.83920364591999,
+            "MBE_FNU": -0.05395179142731355
+        },
+        {
+            "model": "RandomForest",
+            "type": "Santos-style baseline",
+            "preprocessing": "Standard",
+            "training_cv_r2": 0.7147630163151648,
+            "R2": 0.733461629685848,
+            "RMSE_FNU": 7.177724878519798,
+            "nRMSE": 1.0013606845715735,
+            "MAE_FNU": 2.762628966913011,
+            "MBE_FNU": -0.04906201588204861
+        },
+        {
+            "model": "SVR",
+            "type": "Santos-style baseline",
+            "preprocessing": "Standard",
+            "training_cv_r2": 0.7095768381097693,
+            "R2": 0.7158867019577444,
+            "RMSE_FNU": 7.410588866353138,
+            "nRMSE": 1.0338474190473796,
+            "MAE_FNU": 2.7200899907082126,
+            "MBE_FNU": -0.8949098231979645
+        },
+        {
+            "model": "LASSO",
+            "type": "Santos-style baseline",
+            "preprocessing": "None",
+            "training_cv_r2": 0.6076540655740763,
+            "R2": 0.6083396076362837,
+            "RMSE_FNU": 8.700851694152409,
+            "nRMSE": 1.2138513186658857,
+            "MAE_FNU": 3.521098280850156,
+            "MBE_FNU": -0.0735385668430612
+        }
+    ]
+}

@@ -1,0 +1,56 @@
+{
+    "study": "Delaware Santos-compatible GMDH",
+    "implementation_note": "Santos describes GMDH as a self-organizing quadratic-polynomial model but does not report all implementation controls. The controls in this script are fixed documented choices and were not hyperparameter tuned.",
+    "n_train": 1121,
+    "n_test_locked": 281,
+    "test_used": false,
+    "features": [
+        "NDGI",
+        "AWEI",
+        "BSI",
+        "EVI",
+        "ARVI",
+        "NBRI",
+        "MSI",
+        "B04_rhow",
+        "B08_rhow",
+        "B03_rhow",
+        "NDGI_cbrt",
+        "AWEI_cbrt",
+        "BSI_cbrt",
+        "EVI_cbrt",
+        "ARVI_cbrt",
+        "NBRI_cbrt",
+        "MSI_cbrt",
+        "B04_rhow_cbrt",
+        "B08_rhow_cbrt",
+        "B03_rhow_cbrt"
+    ],
+    "n_features": 20,
+    "outer_cv": "5-fold shuffled KFold",
+    "selection_metric": "R2",
+    "preprocessing_cases": [
+        "None",
+        "Standard",
+        "YeoJohnson",
+        "YeoJohnson+Standard"
+    ],
+    "best_preprocessing": "YeoJohnson+Standard",
+    "best_cv_r2": -4.0302317044072023e+40,
+    "best_cv_sd": 9.011872056129344e+40,
+    "gmdh_fixed_controls": {
+        "max_layers": 8,
+        "keep_neurons": 20,
+        "internal_validation_fraction": 0.2,
+        "min_improvement": 0.0001,
+        "polynomial": "a0 + a1*x1 + a2*x2 + a3*x1*x2 + a4*x1^2 + a5*x2^2",
+        "internal_selection_criterion": "validation MSE"
+    },
+    "final_training_selected_layers": 4,
+    "final_training_layer_mse_path": [
+        96.04136181982538,
+        47.540293094311124,
+        30.885928917697843,
+        28.121987418152894
+    ]
+}

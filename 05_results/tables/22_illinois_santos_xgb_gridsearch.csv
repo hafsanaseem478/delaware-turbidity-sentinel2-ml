@@ -1,0 +1,4 @@
+normalization,best_cv_r2,runtime_minutes,colsample_bytree,learning_rate,max_depth,min_child_weight,n_estimators,reg_alpha,reg_lambda,subsample
+None,0.6564774254352596,1.9160327792167664,1.0,0.03,3,1,400,0.0,1.0,0.8
+Standard,0.6564774254352596,1.8118430296579997,1.0,0.03,3,1,400,0.0,1.0,0.8
+YeoJohnson,0.6564774254352596,3.797077703475952,1.0,0.03,3,1,400,0.0,1.0,0.8
